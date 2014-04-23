@@ -11,7 +11,7 @@ import br.ufc.quixada.npi.model.Usuario;
 import br.ufc.quixada.npi.repository.UsuarioRepository;
 
 @Named
-public class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl implements UsuariosService {
 
 	@Inject
 	private UsuarioRepository usuarioRepository;
