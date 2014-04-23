@@ -17,13 +17,13 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.ufc.quixada.npi.model.Contato;
-import br.ufc.quixada.npi.service.ContatosService;
+import br.ufc.quixada.npi.service.ContatoService;
 
 @Named
 @RequestMapping("/contatos")
 public class ContatoController {
 	@Inject
-	private ContatosService cs;
+	private ContatoService cs;
 
 	@RequestMapping(value="{contatoId}", method = RequestMethod.GET)
 	public @ResponseBody Contato getContatoJson(@PathVariable("contatoId") int contatoId) {

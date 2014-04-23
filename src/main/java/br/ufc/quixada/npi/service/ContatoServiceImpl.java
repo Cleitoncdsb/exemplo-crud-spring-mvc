@@ -13,12 +13,12 @@ import br.ufc.quixada.npi.repository.ContatoRepository;
 
 
 @Named
-public class ContatosServiceImpl implements ContatosService {
+public class ContatoServiceImpl implements ContatoService {
 
 	@Inject
 	private ContatoRepository contatoRepository;
 
-	public ContatosServiceImpl() {
+	public ContatoServiceImpl() {
 	}
 
 	@Transactional

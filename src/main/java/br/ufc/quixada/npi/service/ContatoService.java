@@ -5,7 +5,7 @@ import java.util.List;
 import br.ufc.quixada.npi.model.Contato;
 
 
-public interface ContatosService {
+public interface ContatoService {
 
 	public abstract void salvar(Contato contato);
 	

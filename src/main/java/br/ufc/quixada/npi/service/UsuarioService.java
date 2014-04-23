@@ -5,7 +5,7 @@ import java.util.List;
 import br.ufc.quixada.npi.model.Contato;
 import br.ufc.quixada.npi.model.Usuario;
 
-public interface UsuariosService {
+public interface UsuarioService {
 
 	public abstract void salvar(Usuario usuario);
 
