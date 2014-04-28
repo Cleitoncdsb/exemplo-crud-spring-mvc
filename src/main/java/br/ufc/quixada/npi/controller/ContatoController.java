@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;
 
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,8 +73,8 @@ public class ContatoController {
 			return "contato/contatosList";
 		} else {
 			//contato.setId(contatoId);
-			System.out.println("Entrou no método 2, id:" +contato.getId() );
-			//contato.setId(Integer.parseInt("{contatoId}"));
+			System.out.println("Chamou Atualizar" +contato.getId() );
+			
 			this.cs.atualizar(contato);
 			status.setComplete();
 			return "redirect:/contatos";
