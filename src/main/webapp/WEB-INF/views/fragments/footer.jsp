@@ -3,8 +3,7 @@
 <table class="footer">
     <tr>
         <td></td>
-        <td align="right"><img src="<spring:url value="/resources/images/springsource-logo.png" htmlEscape="true" />"
-                               alt="Sponsored by ..."/></td>
+        <td align="right">Footer</td>
     </tr>
 </table>
 

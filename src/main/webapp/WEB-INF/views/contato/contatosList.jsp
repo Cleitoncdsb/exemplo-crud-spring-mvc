@@ -49,13 +49,13 @@
 				cssStyle="width: 200px;" />
 			<datatables:column title="Cidade" property="cidade" />
 			<datatables:column title="Telefone" property="fone" />
-			<datatables:column title="Editar">
-				<button id="btnEditar" class="btn btn-primary editarContato" data-toggle="modal"
+			<datatables:column title="Editar" display="html">
+				<button id="btnEditar" class="btn btn-primary editarContato" data-toggle="modal" 
 					data-target="#myModal"
 					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form');">Editar
 					</button>
 			</datatables:column>
-			<datatables:column title="Excluir">
+			<datatables:column title="Excluir" display="html">
 					<button id="btnExcluir" class="btn btn-primary"
 					onclick="excluir('<c:url value="/contatos/${contato.id}" />');">Excluir
 					</button>
@@ -93,10 +93,11 @@
 							Contato
 							<c:out value="${contato['id']}"></c:out>
 						</h2>
-						<form:form modelAttribute="contato" method="${method}"
+						<form  method="POST" action="<c:url value="/contatos/" />"
 							class="form-horizontal" id="add-contato-form">
 
 							<input type="hidden" name="id" id="id" />
+							<input type="hidden" name="_method" value="put" />
 							
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="nome">Nome</label>
@@ -157,7 +158,7 @@
 									</c:otherwise>
 								</c:choose>
 							</div>
-						</form:form>
+						</form>
 
 					</div>
 					<div class="modal-footer">
