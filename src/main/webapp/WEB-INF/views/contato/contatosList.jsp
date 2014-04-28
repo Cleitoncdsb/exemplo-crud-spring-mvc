@@ -57,7 +57,7 @@
 			</datatables:column>
 			<datatables:column title="Excluir">
 					<button id="btnExcluir" class="btn btn-primary"
-					onclick="excluir('<c:url value="/contatos/${contato.id}" />');">Excluir
+					onclick="excluir('<c:url value="/contatos/${contato.id}" />', '<c:out value="${contato_rowIndex}" />');">Excluir
 					</button>
 			</datatables:column>
 
