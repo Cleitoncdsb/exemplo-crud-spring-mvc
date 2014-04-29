@@ -40,8 +40,8 @@ $(document).ready(function() {
 
 });
 
-function excluir(uri, row) {
-	var dt = $("#contatos").dataTable();
+function excluir(idTable ,uri, row) {
+	var dt = $(idTable).dataTable();
 	$.ajax({
 		type : "DELETE",
 		url : uri,
