@@ -47,8 +47,7 @@ function excluir(uri, row) {
 		url : uri,
 		success : function(data) {
 			console.log(data);
-			dt.fnDeleteRow(row-1);
-			dt.fnDraw();		
+			dt.fnDeleteRow($(row).parents('tr')[0]);
 		}
 	});
 };
