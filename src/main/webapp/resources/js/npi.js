@@ -32,10 +32,7 @@ $(document).ready(function() {
 	});
 
 	$("#myModal").on("hidden.bs.modal", function(e) {
-
-		console.log("TESTE");
 		document.getElementById("add-contato-form").reset();
-
 	});
 
 });
