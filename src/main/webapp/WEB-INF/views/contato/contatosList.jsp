@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -10,9 +10,10 @@
 	uri="http://github.com/dandelion/datatables"%>
 <%@ taglib prefix="gpa" tagdir="/WEB-INF/tags"%>
 
-<html lang="en">
+<html>
 
 <head>
+
 <jsp:include page="../fragments/headTag.jsp" />
 
 <script src="<c:url value="/resources/js/npi.js" />"></script>
@@ -25,7 +26,8 @@
 
 		<c:url value="/resources/js/npi.js" />
 
-		<br><br>
+		<br>
+		<br>
 		<h2>Contatos</h2>
 
 		<!-- Button trigger modal -->
@@ -35,15 +37,11 @@
 		<datatables:table id="contatos" data="${selections}" cdn="true"
 			row="contato" theme="bootstrap2" cssClass="table table-striped"
 			paginate="false" info="false" export="pdf">
-			<datatables:column title="Nome" cssStyle="width: 150px;"
-				display="html">
-				<spring:url value="/contatos/{contatoId}.html" var="contatoUrl">
-					<spring:param name="contatoId" value="${contato.id}" />
-				</spring:url>
-				<a href="${fn:escapeXml(contatoUrl)}"><c:out
-						value="${contato.nome} ${contato.sobreNome}" /></a>
-			</datatables:column>
+
 			<datatables:column title="Nome" display="pdf">
+				<c:out value="${contato.nome} ${contato.sobreNome}" />
+			</datatables:column>
+			<datatables:column title="Nome Completo" cssStyle="width: 200px;">
 				<c:out value="${contato.nome} ${contato.sobreNome}" />
 			</datatables:column>
 			<datatables:column title="Endereço" property="endereco"
@@ -51,15 +49,17 @@
 			<datatables:column title="Cidade" property="cidade" />
 			<datatables:column title="Telefone" property="fone" />
 			<datatables:column title="Editar" display="html">
-				<button id="btnEditar" class="btn btn-default btn-lg editarContato" data-toggle="modal" 
-					data-target="#myModal"
-					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form');"><span class="glyphicon glyphicon-edit"></span>
-					</button>
+				<button id="btnEditar" class="btn btn-default btn-lg editarContato"
+					data-toggle="modal" data-target="#myModal"
+					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form');">
+					<span class="glyphicon glyphicon-edit"></span>
+				</button>
 			</datatables:column>
 			<datatables:column title="Excluir" display="html">
-					<button id="btnExcluir" class="btn btn-default btn-lg"
-					onclick="excluir('#contatos','<c:url value="/contatos/${contato.id}" />', this);"><span class="glyphicon glyphicon-trash"></span>
-					</button>
+				<button id="btnExcluir" class="btn btn-default btn-lg"
+					onclick="excluir('#contatos','<c:url value="/contatos/${contato.id}" />', this);">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
 			</datatables:column>
 
 
@@ -76,16 +76,16 @@
 						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 					</div>
 					<div class="modal-body">
-						
-						<c:set var="idContato"/>
-						
+
+						<c:set var="idContato" />
+
 						<c:choose>
 							<c:when test="${contato['id']  == NULL }">
-							
-								<c:set var="method" value="post"/>
+
+								<c:set var="method" value="post" />
 							</c:when>
 							<c:otherwise>
-								<c:set var="method" value="put"/>
+								<c:set var="method" value="put" />
 							</c:otherwise>
 						</c:choose>
 
@@ -94,12 +94,12 @@
 							Contato
 							<c:out value="${contato['id']}"></c:out>
 						</h2>
-						<form  method="POST" action="<c:url value="/contatos/" />"
+						<form method="POST" action="<c:url value="/contatos/" />"
 							class="form-horizontal" id="add-contato-form">
 
-							<input type="hidden" name="id" id="id" />
-							<input type="hidden" name="_method" value="put" />
-							
+							<input type="hidden" name="id" id="id" /> <input type="hidden"
+								name="_method" value="put" />
+
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="nome">Nome</label>
 								<div class="col-sm-10">
@@ -119,8 +119,8 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="email">Email</label>
 								<div class="col-sm-10">
-									<input type="email" class="form-control" name="email" id="email"
-										placeholder="Email">
+									<input type="email" class="form-control" name="email"
+										id="email" placeholder="Email">
 								</div>
 							</div>
 
@@ -152,10 +152,12 @@
 							<div class="form-actions">
 								<c:choose>
 									<c:when test="${contato['id']  == NULL }">
-										<button class="btn btn-primary" type="submit">Adicionar contato</button>
+										<button class="btn btn-primary" type="submit">Adicionar
+											contato</button>
 									</c:when>
 									<c:otherwise>
-										<button class="btn btn-primary" type="submit">Atualizar contato</button>
+										<button class="btn btn-primary" type="submit">Atualizar
+											contato</button>
 									</c:otherwise>
 								</c:choose>
 							</div>
