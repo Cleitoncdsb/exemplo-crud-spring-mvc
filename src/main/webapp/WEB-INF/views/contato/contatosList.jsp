@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -45,7 +46,7 @@
 			<datatables:column title="Nome" display="pdf">
 				<c:out value="${contato.nome} ${contato.sobreNome}" />
 			</datatables:column>
-			<datatables:column title="Endereço" property="endereco"
+			<datatables:column title="EndereÃ§o" property="endereco"
 				cssStyle="width: 200px;" />
 			<datatables:column title="Cidade" property="cidade" />
 			<datatables:column title="Telefone" property="fone" />
@@ -125,9 +126,9 @@
 
 
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="endereco">Endereço</label>
+								<label class="col-sm-2 control-label" for="endereco">EndereÃ§o</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder="Endereço"
+									<input type="text" class="form-control" placeholder="EndereÃ§o"
 										name="endereco" id="endereco" />
 								</div>
 							</div>
