@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import br.ufc.quixada.npi.service.ContatoService;
 @Named
 @RequestMapping("/contatos")
 public class ContatoController {
+	private Logger log = LoggerFactory.getLogger(this.getClass());
+	
 	@Inject
 	private ContatoService cs;
 
@@ -57,6 +61,7 @@ public class ContatoController {
 			BindingResult result, SessionStatus status) {
 	
 		if (result.hasErrors()) {
+			log.debug("Contato {}", contato.getId());
 			/* mandar mensagem de erro para o form */
 			return "contato/contatosList";
 		} else {
