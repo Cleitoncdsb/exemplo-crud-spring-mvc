@@ -51,14 +51,14 @@
 			<datatables:column title="Cidade" property="cidade" />
 			<datatables:column title="Telefone" property="fone" />
 			<datatables:column title="Editar" display="html">
-				<button id="btnEditar" class="btn btn-primary editarContato" data-toggle="modal" 
+				<button id="btnEditar" class="btn btn-default btn-lg editarContato" data-toggle="modal" 
 					data-target="#myModal"
-					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form');">Editar
+					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form');"><span class="glyphicon glyphicon-edit"></span>
 					</button>
 			</datatables:column>
 			<datatables:column title="Excluir" display="html">
-					<button id="btnExcluir" class="btn btn-primary"
-					onclick="excluir('#contatos','<c:url value="/contatos/${contato.id}" />', this);">Excluir
+					<button id="btnExcluir" class="btn btn-default btn-lg"
+					onclick="excluir('#contatos','<c:url value="/contatos/${contato.id}" />', this);"><span class="glyphicon glyphicon-trash"></span>
 					</button>
 			</datatables:column>
 
