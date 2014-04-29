@@ -40,14 +40,18 @@ $(document).ready(function() {
 
 });
 
-function excluir(uri) {
-
+function excluir(uri, row) {
+	var dt = $("#contatos").dataTable();
 	$.ajax({
 		type : "DELETE",
 		url : uri,
 		success : function(data) {
-			$("#contatos").dataTable()._fnAjaxUpdate();
-		}
+			dt.fnDeleteRow(row-1);
+			dt.fnDraw();		}
 	});
-
+	
+	//Precisa verificar o método delete para que a chamada ajax obtenha sucesso, nom momento não está dando sucesso.
+	//Error 405, method not allowed
+	dt.fnDeleteRow(row-1);
+	dt.fnDraw();
 };
