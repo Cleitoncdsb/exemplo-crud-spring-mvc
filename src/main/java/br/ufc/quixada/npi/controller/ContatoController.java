@@ -39,29 +39,17 @@ public class ContatoController {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String listaContatos(Contato contato, BindingResult result,
 			Map<String, Object> model) {
-
-		// allow parameterless GET request for /owners to return all records
-		if (contato.getNome() == null) {
-			contato.setNome(""); // empty string signifies broadest possible
-									// search
-		}
-
-		// find owners by last name
-		List<Contato> results = cs.findAll();
-		if (results.size() < 1) {
-			// no owners found
-			result.rejectValue("lastName", "notFound", "not found");
-			return "contato/contatosList";
-		}
-		if (results.size() > 1) {
-			// multiple owners found
+		
+		try {
+			List<Contato> results = cs.findAll();
+			
 			model.put("selections", results);
 			return "contato/contatosList";
-		} else {
-			// 1 owner found
-			contato = results.iterator().next();
+		} catch (Exception e) {
+			//Mensagem com erro
 			return "contato/contatosList";
 		}
+		
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
