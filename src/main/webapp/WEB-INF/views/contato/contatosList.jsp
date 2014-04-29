@@ -26,8 +26,7 @@
 
 		<c:url value="/resources/js/npi.js" />
 
-		<br>
-		<br>
+		<br> <br>
 		<h2>Contatos</h2>
 
 		<!-- Button trigger modal -->
