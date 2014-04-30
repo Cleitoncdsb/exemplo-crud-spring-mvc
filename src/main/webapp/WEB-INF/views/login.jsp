@@ -17,7 +17,7 @@
  
 	<c:if test="${not empty error}">
 		<div class="errorblock">
-			Sua tentativa de login não obteve sucesso, tente novamente.<br /> Causa :
+			Sua tentativa de login nï¿½o obteve sucesso, tente novamente.<br /> Causa :
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if>
@@ -27,7 +27,7 @@
  
 		<table>
 			<tr>
-				<td>Usuário:</td>
+				<td>UsuÃ¡rio:</td>
 				<td><input type='text' name='j_username' value=''>
 				</td>
 			</tr>
