@@ -2,8 +2,10 @@ package br.ufc.quixada.npi.model;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 import org.springframework.transaction.annotation.Transactional;
 
 public class UsuarioTest {
@@ -26,11 +28,19 @@ public class UsuarioTest {
 		assertEquals(usuario2, usuario1);
 	}
 	
-	/*@Test
+	
+	@Test
 	@Transactional
 	public void testHasPapel(){
 		Usuario usuario = new Usuario();
-				
-	}*/
-
+		Papel papel = new Papel();
+		papel.setNome("Coordenador");
+		assertNull(usuario.getPapeis());
+		
+		List <Papel> papeis = new ArrayList<Papel>();
+		papeis.add(papel);
+		usuario.setPapeis(papeis);
+		assertNotNull(papeis);
+		assertEquals(papeis, usuario.getPapeis());
+	}
 }
