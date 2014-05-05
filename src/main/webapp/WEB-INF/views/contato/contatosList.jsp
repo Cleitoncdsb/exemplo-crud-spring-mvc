@@ -103,8 +103,8 @@
 						<form method="POST" action="<c:url value="/contatos/" />"
 							class="form-horizontal" id="add-contato-form">
 
-							<input type="hidden" name="id" id="id" /> <input type="hidden"
-								name="_method" value="put" />
+							<input type="hidden" name="id" id="id" /> 
+							<input type="hidden" id="_method" name="_method" value="put" />
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="nome">Nome</label>
@@ -172,7 +172,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
+						<button type="button" class="btn btn-primary" onclick="submeterForm();">Save
 							changes</button>
 					</div>
 				</div>

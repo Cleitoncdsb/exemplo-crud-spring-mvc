@@ -1,11 +1,10 @@
-/*
 
 function submeterForm() {
 
 	console.log("Teste de submite OK.");
 	
 	var form = $("#add-contato-form");
-	console.log(form.attr("#_method value"));
+	console.log(form.attr("#_method"));
 	
 	
 	/*$.ajax({
@@ -17,11 +16,10 @@ function submeterForm() {
 			populate(form, data);
 
 		}
-	});
+	});*/
 
 };
 
-*/
 
 function povoaForm(uri, form) {
 
@@ -64,6 +62,10 @@ $(document).ready(function() {
 
 function excluir(idTable ,uri, row) {
 	var dt = $(idTable).dataTable();
+	
+	var confirme = confirm('Deseja apagar este contato?');
+	
+	if(confirme){
 	$.ajax({
 		type : "DELETE",
 		url : uri,
@@ -84,6 +86,9 @@ function excluir(idTable ,uri, row) {
 			}
 		}
 	});
+	}else{
+		event.preventDefault();
+	}
 };
 
 /*
