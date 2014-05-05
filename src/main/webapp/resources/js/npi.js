@@ -1,3 +1,28 @@
+/*
+
+function submeterForm() {
+
+	console.log("Teste de submite OK.");
+	
+	var form = $("#add-contato-form");
+	console.log(form.attr("#_method value"));
+	
+	
+	/*$.ajax({
+		type : "GET",
+		dataType : "json",
+		url : uri,
+		success : function(data) {
+
+			populate(form, data);
+
+		}
+	});
+
+};
+
+*/
+
 function povoaForm(uri, form) {
 
 	$.ajax({
@@ -32,26 +57,36 @@ $(document).ready(function() {
 	});
 
 	$("#myModal").on("hidden.bs.modal", function(e) {
-
-		console.log("TESTE");
 		document.getElementById("add-contato-form").reset();
-
 	});
 
 });
 
-function excluir(uri, row) {
-	var dt = $("#contatos").dataTable();
+function excluir(idTable ,uri, row) {
+	var dt = $(idTable).dataTable();
 	$.ajax({
 		type : "DELETE",
 		url : uri,
 		success : function(data) {
-			console.log(data);
-			dt.fnDeleteRow(row-1);
-			dt.fnDraw();		
+			if(data=="ok"){
+			  $('#mensagens').removeClass('alert-danger');
+			  $('#mensagens').addClass('alert-success');
+			  $('#mensagens').show();	
+			  $('#mensagens').text("Remoção Feita com Sucesso");
+		      $('#mensagens').fadeOut(4000);
+			  dt.fnDeleteRow($(row).parents('tr')[0]);
+			}else{
+				$('#mensagens').removeClass('alert-success');
+				$('#mensagens').addClass('alert-danger');
+				$('#mensagens').show();	
+				$('#mensagens').text("Reportando Erros");
+			      
+			}
 		}
 	});
 };
+
+/*
 
 //this is the id of the form 
 $("#idForm").submit(function() { 
@@ -71,3 +106,4 @@ $("#idForm").submit(function() {
 });
 	
 
+*/
