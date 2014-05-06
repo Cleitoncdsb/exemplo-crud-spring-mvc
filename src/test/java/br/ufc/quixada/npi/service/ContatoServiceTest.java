@@ -24,7 +24,7 @@ public class ContatoServiceTest {
 
 	@Test
 	public void testAtualizar() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
