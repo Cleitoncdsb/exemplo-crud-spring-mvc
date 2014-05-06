@@ -11,8 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -57,20 +59,23 @@ public class ContatoController {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
-	public String atualizarContato(@Valid Contato contato,
-			BindingResult result, SessionStatus status) {
 	
+	public @ResponseBody Contato atualizarContato(@RequestBody Contato contato,
+			BindingResult result, SessionStatus status) {
+		
+		System.out.println("Chamou Atualizar" +contato.getId() );
 		if (result.hasErrors()) {
+		
 			log.debug("Contato {}", contato.getId());
 			/* mandar mensagem de erro para o form */
-			return "contato/contatosList";
+			return contato;
 		} else {
 			//contato.setId(contatoId);
 			System.out.println("Chamou Atualizar" +contato.getId() );
 			
 			this.cs.atualizar(contato);
 			status.setComplete();
-			return "redirect:/contatos";
+			return contato;
 		}
 	}
 	

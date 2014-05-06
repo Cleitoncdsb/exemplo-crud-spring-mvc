@@ -100,11 +100,9 @@
 							Contato
 							<c:out value="${contato['id']}"></c:out>
 						</h2>
-						<form method="POST" action="<c:url value="/contatos/" />"
-							class="form-horizontal" id="add-contato-form">
+						<form class="form-horizontal" id="add-contato-form">
 
 							<input type="hidden" name="id" id="id" /> 
-							<input type="hidden" id="_method" name="_method" value="put" />
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="nome">Nome</label>
@@ -162,8 +160,7 @@
 											contato</button>
 									</c:when>
 									<c:otherwise>
-										<button class="btn btn-primary" type="submit">Atualizar
-											contato</button>
+										<button class="btn btn-primary" id="gravar" onclick="submeterForm();">Gravar</button>
 									</c:otherwise>
 								</c:choose>
 							</div>
