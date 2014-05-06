@@ -2,9 +2,6 @@
 <html>
 <head>
 <title>Login Page</title>
-<link
-	href="<c:url value="/webjars/bootstrap/3.1.1/css/bootstrap-responsive.css" />"
-	rel="stylesheet" />
 <jsp:include page="./fragments/headTag.jsp" />
 <style type="text/css">
 body {
