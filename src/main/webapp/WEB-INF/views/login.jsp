@@ -5,6 +5,9 @@
 <head>
 <title>Página de Login</title>
 <link href="<c:url value="/webjars/bootstrap/3.1.1/css/bootstrap.min.css" />" rel="stylesheet" />
+<script src="<c:url value="/webjars/jquery/2.1.0/jquery.js" />"></script>
+<script src="<c:url value="/webjars/bootstrap/3.1.1/js/bootstrap.min.js" />"></script>
+
 <style>
 .errorblock {
 	color: #ff0000;
@@ -24,7 +27,8 @@
 <body onload='document.f.j_username.focus();'>
  
 	<c:if test="${not empty error}">
-		<div class="errorblock">
+		<div class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 			Sua tentativa de login não obteve sucesso, tente novamente.<br /> Causa :
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
