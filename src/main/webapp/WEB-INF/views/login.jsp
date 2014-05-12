@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<title>Login Page</title>
+<title>Página de Login</title>
 <style>
 .errorblock {
 	color: #ff0000;
@@ -17,7 +17,7 @@
  
 	<c:if test="${not empty error}">
 		<div class="errorblock">
-			Sua tentativa de login nï¿½o obteve sucesso, tente novamente.<br /> Causa :
+			Sua tentativa de login não obteve sucesso, tente novamente.<br /> Causa :
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if>
@@ -27,12 +27,12 @@
  
 		<table>
 			<tr>
-				<td>UsuÃ¡rio:</td>
+				<td><h4>Usuário:</h4></td>
 				<td><input type='text' name='j_username' value=''>
 				</td>
 			</tr>
 			<tr>
-				<td>Senha:</td>
+				<td><h4>Senha:</h4></td>
 				<td><input type='password' name='j_password' />
 				</td>
 			</tr>
