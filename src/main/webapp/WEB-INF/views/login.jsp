@@ -30,7 +30,7 @@
 		</div>
 	</c:if>
 		<div class="center col-md-4">
-			<div style="text-align: center" class="panel panel-primary">
+			<div style="text-align: center" class="panel panel-default">
 				<div class="panel-heading">
 					<h5 class="panel-title">Login</h5>
 				</div>
