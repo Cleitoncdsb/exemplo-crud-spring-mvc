@@ -12,13 +12,3 @@
 
 <script
 	src="<c:url value="/webjars/bootstrap/3.1.1/js/bootstrap.min.js" />"></script>
-
-<script
-	src="<c:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.core.js" />"></script>
-
-<script
-	src="<c:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js" />"></script>
-
-<script
-	src="<c:url value="/webjars/jquery-ui/1.10.3/ui/jquery.ui.datepicker.js" />"></script>
-
