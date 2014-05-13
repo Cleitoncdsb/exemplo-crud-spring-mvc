@@ -12,3 +12,6 @@
 
 <script
 	src="<c:url value="/webjars/bootstrap/3.1.1/js/bootstrap.min.js" />"></script>
+	
+<script
+	src="<c:url value="/webjars/bootbox/4.2.0/bootbox.min.js" />"></script>

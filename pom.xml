@@ -7,6 +7,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
+		<!-- Jackson JSON Mapper -->
+		<bootbox.version>4.2.0</bootbox.version>
 		
 		<!-- Jackson JSON Mapper -->
 		<jackson.version>1.9.10</jackson.version>
@@ -190,6 +192,12 @@
 			<artifactId>datatables-servlet2</artifactId>
 			<version>${dandelion.datatables.version}</version>
 		</dependency>
+
+	<dependency>
+		<groupId>org.webjars</groupId>
+		<artifactId>bootbox</artifactId>
+		<version>${bootbox.version}</version>
+	</dependency>
 
 	</dependencies>
 	<build>
