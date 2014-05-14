@@ -117,33 +117,33 @@ $(document).ready(function() {
 
 function excluir(idTable ,uri, row) {
 	var dt = $(idTable).dataTable();
-
-	var confirme = confirm('Deseja apagar este contato?');
-
-	if(confirme){
-		$.ajax({
-			type : "DELETE",
-			url : uri,
-			success : function(data) {
-				if(data=="ok"){
-					$('#mensagens').removeClass('alert-danger');
-					$('#mensagens').addClass('alert-success');
-					$('#mensagens').show();	
-					$('#mensagens').text("Remoção Feita com Sucesso");
-					$('#mensagens').fadeOut(4000);
-					dt.fnDeleteRow($(row).parents('tr')[0]);
-				}else{
-					$('#mensagens').removeClass('alert-success');
-					$('#mensagens').addClass('alert-danger');
-					$('#mensagens').show();	
-					$('#mensagens').text("Reportando Erros");
-
+	
+	bootbox.confirm('Deseja apagar este contato?', function(result){
+		if(result){
+			$.ajax({
+				type : "DELETE",
+				url : uri,
+				success : function(data) {
+					if(data=="ok"){
+					  $('#mensagens').removeClass('alert-danger');
+					  $('#mensagens').addClass('alert-success');
+					  $('#mensagens').show();	
+					  $('#mensagens').text("Remoção Feita com Sucesso");
+				      $('#mensagens').fadeOut(4000);
+					  dt.fnDeleteRow($(row).parents('tr')[0]);
+					}else{
+						$('#mensagens').removeClass('alert-success');
+						$('#mensagens').addClass('alert-danger');
+						$('#mensagens').show();	
+						$('#mensagens').text("Reportando Erros");
+					      
+					}
 				}
+			});
+			}else{
+				event.preventDefault();
 			}
-		});
-	}else{
-		event.preventDefault();
-	}
+	});
 };
 
 /*
