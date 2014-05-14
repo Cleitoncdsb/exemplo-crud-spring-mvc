@@ -36,6 +36,11 @@
 	</div>
 
 
+
+<button class="btn btn-primary" id="gravar" onclick="submeterForm();" >Gravar</button>
+
+
+
 		<!-- Button trigger modal -->
 		<button id="btnAdicionar" class="btn btn-primary" data-toggle="modal"
 			data-target="#myModal">Adicionar Contato</button>
@@ -160,7 +165,7 @@
 											contato</button>
 									</c:when>
 									<c:otherwise>
-										<button class="btn btn-primary" id="gravar" onclick="submeterForm();">Gravar</button>
+										<button class="btn btn-primary" id="gravar" onclick="submeterForm();" >Gravar</button>
 									</c:otherwise>
 								</c:choose>
 							</div>

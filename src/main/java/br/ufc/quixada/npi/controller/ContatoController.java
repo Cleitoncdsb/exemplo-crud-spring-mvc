@@ -9,7 +9,9 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import com.google.gson.Gson;
 
 import br.ufc.quixada.npi.model.Contato;
 import br.ufc.quixada.npi.service.ContatoService;
 
-@Named
+@Controller
 @RequestMapping("/contatos")
 public class ContatoController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -36,10 +41,6 @@ public class ContatoController {
 		return this.cs.findById(contatoId);
  
 	}
-	
-	
-	/*-- RETIRAR OS REDIRECTS, ACHO QUE USANDO AJAX --*/
-	
 	
 	/* Verificar porque não funciona com 0 ou 1 contatos */
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -59,29 +60,32 @@ public class ContatoController {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
-	
-	public @ResponseBody Contato atualizarContato(@RequestBody Contato contato,
-			BindingResult result, SessionStatus status) {
+	public @ResponseBody Contato atualizarContato(@RequestBody Contato contato, BindingResult result, SessionStatus status){		
 		
-		System.out.println("Chamou Atualizar" +contato.getId() );
-		if (result.hasErrors()) {
-		
-			log.debug("Contato {}", contato.getId());
-			/* mandar mensagem de erro para o form */
-			return contato;
-		} else {
-			//contato.setId(contatoId);
-			System.out.println("Chamou Atualizar" +contato.getId() );
+		System.out.println("Chamou Atualizar " + contato.getId() );
 			
+		if (result.hasErrors()) {
+			//Enviar erros
+			return contato;
+		}else{
 			this.cs.atualizar(contato);
-			status.setComplete();
+			//status.setComplete();
 			return contato;
 		}
+	
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String adicionarContato(@Valid Contato contato,
 			BindingResult result, SessionStatus status) {
+	
+		Gson gson = new Gson();
+		
+		String contatoJson = gson.toJson(contato);
+		
+		System.out.println("\n\n"+contatoJson+"\n\n");
+		
+		
 		if (result.hasErrors()) {
 			/*incluir erros*/
 			return "redirect:/contatos";

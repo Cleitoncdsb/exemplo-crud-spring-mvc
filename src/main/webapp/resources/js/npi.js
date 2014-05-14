@@ -8,20 +8,23 @@ function submeterForm() {
 	var idContato = id.attr('value');
 	
 	var form = $('#add-contato-form');
-	var serializedData = form.serialize();
+	var data = ConvertFormToJSON(form);
 	
 	console.log(ConvertFormToJSON(form));
 	
 	if(idContato != ""){
-		console.log("entrou aqui");
+		console.log("Chamou método que envia requisição AjaxS");
 		//Chamada AJAX para EDITAR contato
 
+		var contato = {"id":"38","nome":"Leonel Junior","sobreNome":"Junior Junior","fone":"8787-9863","cidade":"Irapuan","endereco":"rua tal","email":"junior.wdtf@gmail.com"};
+		
 		var request = $.ajax({
-			contentType : "application/json",
+			contentType : "application/json; charset=utf-8",
 			type : "PUT",
 			dataType : "json",
 			url : "http://localhost:8080/exemplo-jpa-spring-mvc/contatos/",
-			data : form.serializeObject()
+			data : JSON.stringify(data),
+		
 		});
 		
 		request.done(function(data) {
@@ -87,12 +90,12 @@ function populate(frm, data) {
 
 $(document).ready(function() {
 	
-	/*
+	
 	$("#btnAdicionar").click(function() {
 		var form = $("#add-contato-form");
 		form.attr("method","post");
 	});
-
+	/*
 	$("#btnEditar").click(function() {
 		var form = $("#add-contato-form");
 		form.attr("method","put");
