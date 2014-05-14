@@ -3,20 +3,18 @@ function submeterForm() {
 
 	console.log("Teste de submite OK");
 
-
-	var id =$('#id');
-	var idContato = id.attr('value');
+	var dt = $("#contatos").dataTable();
+	
+	var idContato = $('#id').val();
 	
 	var form = $('#add-contato-form');
 	var data = ConvertFormToJSON(form);
 	
 	console.log(ConvertFormToJSON(form));
 	
-	if(idContato != ""){
+	if(idContato != "" || idContato.val != null){
 		console.log("Chamou método que envia requisição AjaxS");
 		//Chamada AJAX para EDITAR contato
-
-		var contato = {"id":"38","nome":"Leonel Junior","sobreNome":"Junior Junior","fone":"8787-9863","cidade":"Irapuan","endereco":"rua tal","email":"junior.wdtf@gmail.com"};
 		
 		var request = $.ajax({
 			contentType : "application/json; charset=utf-8",
@@ -28,27 +26,44 @@ function submeterForm() {
 		});
 		
 		request.done(function(data) {
-		
+			$("#myModal").modal("hide");
+			  $('#mensagens').removeClass('alert-danger');
+			  $('#mensagens').addClass('alert-success');
+			  $('#mensagens').show();	
+			  $('#mensagens').text("Edição feita com sucesso");
+		      $('#mensagens').fadeOut(4000);
 			console.log("SUCESSO ao editar contato");
 			
 		});
 		
 		request.fail(function(data) {
-			console.log(serializedData);
 			console.log("ERRO ao editar contato");
 			
 		});
 		
 	}else{
-		//Chamada AJAX para INSERIR contato 
-		$.ajax({
+		var request = $.ajax({
+			contentType : "application/json; charset=utf-8",
 			type : "POST",
 			dataType : "json",
-			url : uri,
-			data : serializedData
+			url : "http://localhost:8080/exemplo-jpa-spring-mvc/contatos/",
+			data : JSON.stringify(data),
+		
+		});
+		
+		request.done(function(data) {
+			$("#myModal").modal("hide");
+			  $('#mensagens').removeClass('alert-danger');
+			  $('#mensagens').addClass('alert-success');
+			  $('#mensagens').show();	
+			  $('#mensagens').text("Adição feita com sucesso");
+		      $('#mensagens').fadeOut(4000);
+			console.log("SUCESSO ao adicionar contato");
 			
+		});
 		
-		
+		request.fail(function(data) {
+			console.log("ERRO ao adicionar contato");			
 		});
 	}
 
@@ -67,6 +82,9 @@ function ConvertFormToJSON(form){
 
 
 function povoaForm(uri, form) {
+	
+	$("#myModalLabel").text("Atualizar contato");
+	$("#btnSubmitForm").text("Atualizar");
 
 	$.ajax({
 		type : "GET",
@@ -92,16 +110,11 @@ $(document).ready(function() {
 	
 	
 	$("#btnAdicionar").click(function() {
-		var form = $("#add-contato-form");
-		form.attr("method","post");
+		$("#myModalLabel").text("Adicionar contato");
+		$("#btnSubmitForm").text("Adicionar");
 	});
+	
 	/*
-	$("#btnEditar").click(function() {
-		var form = $("#add-contato-form");
-		form.attr("method","put");
-	});
-	
-	
 	$("#gravar").click(function(ev) {
 		
 		submeterForm();
@@ -140,8 +153,6 @@ function excluir(idTable ,uri, row) {
 					}
 				}
 			});
-			}else{
-				event.preventDefault();
 			}
 	});
 };

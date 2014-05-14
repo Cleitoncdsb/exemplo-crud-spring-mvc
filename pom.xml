@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<!-- Jackson JSON Mapper -->
+		<!-- Bootbox -->
 		<bootbox.version>4.2.0</bootbox.version>
 		
 		<!-- Jackson JSON Mapper -->
@@ -50,13 +50,6 @@
 	</properties>
 
 	<dependencies>
-	
-		<!-- Convert JSON -->	
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.2.4</version>
-		</dependency>
 	
 		<!-- JSP API -->
 		<dependency>

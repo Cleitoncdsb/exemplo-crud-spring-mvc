@@ -35,12 +35,6 @@
 	  	<strong>Mensagem!</strong>Better check yourself, you're not looking too good.
 	</div>
 
-
-
-<button class="btn btn-primary" id="gravar" onclick="submeterForm();" >Gravar</button>
-
-
-
 		<!-- Button trigger modal -->
 		<button id="btnAdicionar" class="btn btn-primary" data-toggle="modal"
 			data-target="#myModal">Adicionar Contato</button>
@@ -84,27 +78,10 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+						<h4 class="modal-title" id="myModalLabel">Adicionar contato</h4>
 					</div>
 					<div class="modal-body">
 
-						<c:set var="idContato" />
-
-						<c:choose>
-							<c:when test="${contato['id']  == NULL }">
-
-								<c:set var="method" value="post" />
-							</c:when>
-							<c:otherwise>
-								<c:set var="method" value="put" />
-							</c:otherwise>
-						</c:choose>
-
-						<h2>
-							<c:if test="${contato['id']  != NULL }">Novo </c:if>
-							Contato
-							<c:out value="${contato['id']}"></c:out>
-						</h2>
 						<form class="form-horizontal" id="add-contato-form">
 
 							<input type="hidden" name="id" id="id" /> 
@@ -157,25 +134,13 @@
 										name="fone" id="fone" />
 								</div>
 							</div>
-
-							<div class="form-actions">
-								<c:choose>
-									<c:when test="${contato['id']  == NULL }">
-										<button class="btn btn-primary" type="submit">Adicionar
-											contato</button>
-									</c:when>
-									<c:otherwise>
-										<button class="btn btn-primary" id="gravar" onclick="submeterForm();" >Gravar</button>
-									</c:otherwise>
-								</c:choose>
-							</div>
+							
 						</form>
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" onclick="submeterForm();">Save
-							changes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+						<button id="btnSubmitForm" type="button" class="btn btn-primary" onclick="submeterForm();">Salvar</button>
 					</div>
 				</div>
 			</div>

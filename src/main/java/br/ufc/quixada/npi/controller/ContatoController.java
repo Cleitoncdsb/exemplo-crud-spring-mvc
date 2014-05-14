@@ -9,25 +9,19 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import com.google.gson.Gson;
 
 import br.ufc.quixada.npi.model.Contato;
 import br.ufc.quixada.npi.service.ContatoService;
 
-@Controller
+@Named
 @RequestMapping("/contatos")
 public class ContatoController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -76,23 +70,16 @@ public class ContatoController {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String adicionarContato(@Valid Contato contato,
-			BindingResult result, SessionStatus status) {
-	
-		Gson gson = new Gson();
-		
-		String contatoJson = gson.toJson(contato);
-		
-		System.out.println("\n\n"+contatoJson+"\n\n");
-		
+	public @ResponseBody Contato adicionarContato(@RequestBody Contato contato,
+			BindingResult result, SessionStatus status) {		
 		
 		if (result.hasErrors()) {
 			/*incluir erros*/
-			return "redirect:/contatos";
+			return contato;
 		} else {
 			this.cs.salvar(contato);
 			status.setComplete();
-			return "redirect:/contatos";
+			return contato;
 		}
 	}	
 	
