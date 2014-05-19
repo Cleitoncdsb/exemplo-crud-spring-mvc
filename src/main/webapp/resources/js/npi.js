@@ -3,14 +3,15 @@ function submeterForm() {
 
 	console.log("Teste de submite OK");
 
-	var dt = $("#contatos").dataTable();
-	
 	var idContato = $('#id').val();
 	
 	var form = $('#add-contato-form');
 	var data = ConvertFormToJSON(form);
 	
 	console.log(ConvertFormToJSON(form));
+
+	//Tabela
+	var dt = $("#contatos").dataTable();
 	
 	if(idContato != "" || idContato.val != null){
 		console.log("Chamou método que envia requisição AjaxS");
@@ -27,11 +28,22 @@ function submeterForm() {
 		
 		request.done(function(data) {
 			$("#myModal").modal("hide");
-			  $('#mensagens').removeClass('alert-danger');
-			  $('#mensagens').addClass('alert-success');
-			  $('#mensagens').show();	
-			  $('#mensagens').text("Edição feita com sucesso");
-		      $('#mensagens').fadeOut(4000);
+			$('#mensagens').removeClass('alert-danger');
+			$('#mensagens').addClass('alert-success');
+			$('#mensagens').show();	
+			$('#mensagens').text("Edição feita com sucesso");
+		    $('#mensagens').fadeOut(4000);
+
+		    /*
+		    var addData = [];
+		    $.each(data, function(key, value) {
+                addData.push(value);
+			});
+		    
+		    dt.fnAddData(addData);
+		    */
+		    
+		      
 			console.log("SUCESSO ao editar contato");
 			
 		});
@@ -53,12 +65,13 @@ function submeterForm() {
 		
 		request.done(function(data) {
 			$("#myModal").modal("hide");
-			  $('#mensagens').removeClass('alert-danger');
-			  $('#mensagens').addClass('alert-success');
-			  $('#mensagens').show();	
-			  $('#mensagens').text("Adição feita com sucesso");
-		      $('#mensagens').fadeOut(4000);
+			$('#mensagens').removeClass('alert-danger');
+			$('#mensagens').addClass('alert-success');
+			$('#mensagens').show();	
+			$('#mensagens').text("Adição feita com sucesso");
+		    $('#mensagens').fadeOut(4000);
 			console.log("SUCESSO ao adicionar contato");
+			dt.fnAddData({"nome":data.nome + " "+data.sobreNome, "endereco":data.endereco, "cidade":data.cidade,"fone":data.fone,"editar":"btn1","excluir":"<button id='btnExcluir' class='btn btn-default btn-lg' onclick='excluir('#contatos','<c:url value='/contatos/${contato.id}' />', this);'><span class='glyphicon glyphicon-trash'></span></button>"});
 			
 		});
 		

@@ -43,21 +43,22 @@
 			<datatables:column title="Nome" display="pdf">
 				<c:out value="${contato.nome} ${contato.sobreNome}" />
 			</datatables:column>
-			<datatables:column title="Nome Completo" cssStyle="width: 200px;">
+			<datatables:column title="Nome Completo" cssStyle="width: 200px;" property="nome">
 				<c:out value="${contato.nome} ${contato.sobreNome}" />
 			</datatables:column>
+			
 			<datatables:column title="Endereço" property="endereco"
 				cssStyle="width: 200px;" />
 			<datatables:column title="Cidade" property="cidade" />
 			<datatables:column title="Telefone" property="fone" />
-			<datatables:column title="Editar" display="html">
+			<datatables:column title="Editar" display="html" property="editar">
 				<button id="btnEditar" class="btn btn-default btn-lg editarContato"
 					data-toggle="modal" data-target="#myModal"
 					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form');">
 					<span class="glyphicon glyphicon-edit"></span>
 				</button>
 			</datatables:column>
-			<datatables:column title="Excluir" display="html">
+			<datatables:column title="Excluir" display="html" property="excluir">
 				<button id="btnExcluir" class="btn btn-default btn-lg"
 					onclick="excluir('#contatos','<c:url value="/contatos/${contato.id}" />', this);">
 					<span class="glyphicon glyphicon-trash"></span>
