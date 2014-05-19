@@ -7,9 +7,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
+		<!-- Bootbox -->
+		<bootbox.version>4.2.0</bootbox.version>
 		
 		<!-- Jackson JSON Mapper -->
-		<jackson.version>1.9.10</jackson.version>
+		<jackson.version>2.3.0</jackson.version>
 	
 		<!-- Generic properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,11 +60,19 @@
         </dependency>		
 
 		<!-- Jackson JSON Mapper -->
+	
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+ 
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
 
 		<!-- Java EE / Java SE dependencies -->
 		<dependency>
@@ -190,6 +200,12 @@
 			<artifactId>datatables-servlet2</artifactId>
 			<version>${dandelion.datatables.version}</version>
 		</dependency>
+
+	<dependency>
+		<groupId>org.webjars</groupId>
+		<artifactId>bootbox</artifactId>
+		<version>${bootbox.version}</version>
+	</dependency>
 
 	</dependencies>
 	<build>
