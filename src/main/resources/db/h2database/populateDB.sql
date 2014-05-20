@@ -1,3 +1,52 @@
+INSERT INTO usuario(
+			id, login, password, habilitado)
+	VALUES (01, 'maria', '123', true);
+	
+INSERT INTO usuario(
+			id, login, password, habilitado)
+	VALUES (02, 'jose', '456', true);
+	
+INSERT INTO usuario(
+			id, login, password, habilitado)
+	VALUES (03, 'ana', '789', true);
+	
+INSERT INTO usuario(
+			id, login, password, habilitado)
+	VALUES (04, 'joao', '147', true);
+	
+INSERT INTO usuario(
+			id, login, password, habilitado)
+	VALUES (05, 'joana', '258', true);
+	
+INSERT INTO contato(
+			id, nome, sobrenome, fone, cidade, endereço, email)
+	VALUES (01, 'ana', 'maria' '98586332', 'quixada', 'rua 1, 100', 'anamaria@gmail.com');
 
+INSERT INTO contato(
+			id, nome, sobrenome, fone, cidade, endereço, email)
+	VALUES (02, 'maria', 'paula' '45872136', 'fortaleza', 'rua margaridas, 58', 'mariapaula@gmail.com');
 
-         
+INSERT INTO contato(
+			id, nome, sobrenome, fone, cidade, endereço, email)
+	VALUES (03, 'marco', 'luis' '45852147', 'quixeramobim', 'rua 503, 25', 'marcoluis@gmail.com');
+
+INSERT INTO contato(
+			id, nome, sobrenome, fone, cidade, endereço, email)
+	VALUES (04, 'joao', 'lucas' '74581236', 'fortaleza', 'rua nova, 741', 'joaolucas@gmail.com');
+
+INSERT INTO contato(
+			id, nome, sobrenome, fone, cidade, endereço, email)
+	VALUES (05, 'maria', 'luisa' '98586332', 'quixada', 'rua 15 de outubro, s/n', 'anamaria@gmail.com');
+	
+INSERT INTO papel(
+			id, nome,)
+	VALUES (01, 'admin');
+	
+INSERT INTO papel(
+			id, nome)
+	VALUES (02, 'servidor');
+	
+INSERT INTO papel(
+			id, nome)
+	VALUES (03, 'aluno');
+	
