@@ -24,7 +24,7 @@ INSERT INTO contato(
 
 INSERT INTO contato(
 			id, nome, sobrenome, fone, cidade, endereço, email)
-	VALUES (02, 'maria', 'paula' '45872136', 'fortaleza', 'rua margaridas, 58', 'mariapaula@gmail.com');
+	VALUES (02, 'maria', 'paula' '45872136', 'fortaleza', 'rua margaridas, 57', 'mariapaula@gmail.com');
 
 INSERT INTO contato(
 			id, nome, sobrenome, fone, cidade, endereço, email)
