@@ -2,8 +2,6 @@
 
 #conteudo{
 	width: auto;
-	border-color: black;
-	border-width: 3px;
 	
 }
 
@@ -13,6 +11,6 @@
 }
 
 #rodape{
-	border:solid  2;
 	text-align: center;
+	border:grey 1px solid;
 }

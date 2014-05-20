@@ -7,8 +7,6 @@ function submeterForm() {
 	
 	var form = $('#add-contato-form');
 	var data = ConvertFormToJSON(form);
-	
-	console.log(ConvertFormToJSON(form));
 
 	//Tabela
 	var dt = $("#contatos").dataTable();
@@ -34,21 +32,13 @@ function submeterForm() {
 			$('#mensagens').text("Edição feita com sucesso");
 		    $('#mensagens').fadeOut(4000);
 
-		    /*
-		    var addData = [];
-		    $.each(data, function(key, value) {
-                addData.push(value);
-			});
+		    dt.fnUpdate("MASSA" , 0, 3);
 		    
-		    dt.fnAddData(addData);
-		    */
-		    
-		      
 			console.log("SUCESSO ao editar contato");
 			
 		});
 		
-		request.fail(function(data) {
+			request.fail(function(data) {
 			console.log("ERRO ao editar contato");
 			
 		});
@@ -71,7 +61,10 @@ function submeterForm() {
 			$('#mensagens').text("Adição feita com sucesso");
 		    $('#mensagens').fadeOut(4000);
 			console.log("SUCESSO ao adicionar contato");
-			dt.fnAddData({"nome":data.nome + " "+data.sobreNome, "endereco":data.endereco, "cidade":data.cidade,"fone":data.fone,"editar":"btn1","excluir":"<button id='btnExcluir' class='btn btn-default btn-lg' onclick='excluir('#contatos','<c:url value='/contatos/${contato.id}' />', this);'><span class='glyphicon glyphicon-trash'></span></button>"});
+			dt.fnAddData({"nome":data.nome + " "+data.sobreNome, 
+				"endereco":data.endereco, "cidade":data.cidade,"fone":data.fone,
+				"editar":"<button id=\"btnEditar\" class=\"btn btn-default btn-lg editarContato\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"povoaForm(\'\/exemplo-jpa-spring-mvc\/contatos\/"+ data.id +"\/\', \'#add-contato-form\');\"> <span class=\"glyphicon glyphicon-edit\"><\/span> <\/button>",
+				"excluir":"<button id=\"btnExcluir\" class=\"btn btn-default btn-lg\" onclick=\"excluir(\'#contatos\',\'\/exemplo-jpa-spring-mvc\/contatos\/"+ data.id +"\/\', this);\"><span class=\"glyphicon glyphicon-trash\"><\/span><\/button>"});
 			
 		});
 		
@@ -93,12 +86,12 @@ function ConvertFormToJSON(form){
 	return json; 
 }
 
-
-function povoaForm(uri, form) {
+//É chamado quando clica no botão de editar contato, ele busca o contato completo e povoa o formulário de edição
+function povoaForm(uri, form, row) {
 	
 	$("#myModalLabel").text("Atualizar contato");
 	$("#btnSubmitForm").text("Atualizar");
-
+	console.log("Verificação da linha" + row.value);
 	$.ajax({
 		type : "GET",
 		dataType : "json",
@@ -107,6 +100,11 @@ function povoaForm(uri, form) {
 
 			console.log(data);
 			populate(form, data);
+			
+			//Adiciona a linha da tabela que está sendo editada, será usada na função submeterForm
+			$('linha').attr('value', row);
+			
+			console.log("Verificação da linha"+row);
 
 		}
 	});
@@ -157,6 +155,7 @@ function excluir(idTable ,uri, row) {
 					  $('#mensagens').text("Remoção Feita com Sucesso");
 				      $('#mensagens').fadeOut(4000);
 					  dt.fnDeleteRow($(row).parents('tr')[0]);
+				
 					}else{
 						$('#mensagens').removeClass('alert-success');
 						$('#mensagens').addClass('alert-danger');
