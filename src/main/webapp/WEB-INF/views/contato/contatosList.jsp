@@ -15,7 +15,10 @@
 <head>
 
 <jsp:include page="../fragments/headTag.jsp" />
-
+<link
+	href="<c:url value="/webjars/datatables/1.9.4/media/css/jquery.dataTables.css" />"
+	rel="stylesheet" />
+<script src="<c:url value="/webjars/datatables/1.9.4/media/js/jquery.dataTables.min.js" />"></script>
 <script src="<c:url value="/resources/js/npi.js" />"></script>
 </head>
 
@@ -36,9 +39,9 @@
 		<button id="btnAdicionar" class="btn btn-primary" data-toggle="modal"
 			data-target="#myModal">Adicionar Contato</button>
 
-		<datatables:table id="contatos" data="${selections}" cdn="true"
+		<datatables:table id="contatos" data="${selections}" cdn="false"
 			row="contato" theme="bootstrap2" cssClass="table table-striped"
-			paginate="false" info="false" export="pdf">
+			paginate="true" info="false" export="pdf">
 
 			<datatables:column title="Nome" display="pdf">
 				<c:out value="${contato.nome} ${contato.sobreNome}" />
@@ -54,7 +57,7 @@
 			<datatables:column title="Editar" display="html" property="editar">
 				<button id="btnEditar" class="btn btn-default btn-lg editarContato"
 					data-toggle="modal" data-target="#myModal"
-					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form');">
+					onclick="povoaForm('<c:url value="/contatos/${contato.id}" />', '#add-contato-form', this);">
 					<span class="glyphicon glyphicon-edit"></span>
 				</button>
 			</datatables:column>
@@ -78,6 +81,9 @@
 							aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="myModalLabel">Adicionar contato</h4>
 					</div>
+					
+					<input type="hidden" id="linha">
+					
 					<div class="modal-body">
 
 						<form class="form-horizontal" id="add-contato-form">

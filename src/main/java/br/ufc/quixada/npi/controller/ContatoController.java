@@ -78,6 +78,7 @@ public class ContatoController {
 			return contato;
 		} else {
 			this.cs.salvar(contato);
+			System.out.println("\n\n\n"+contato.getId());
 			status.setComplete();
 			return contato;
 		}
