@@ -24,8 +24,6 @@
 	<div class="container">
 		<jsp:include page="../fragments/bodyHeader.jsp" />
 
-		<c:url value="/resources/js/npi.js" />
-
 		<br> <br>
 		<h2>Contatos</h2>
 
