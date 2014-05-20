@@ -82,8 +82,7 @@
 						<h4 class="modal-title" id="myModalLabel">Adicionar contato</h4>
 					</div>
 					
-					<input type="hidden" id="linha">
-					
+										
 					<div class="modal-body">
 
 						<form class="form-horizontal" id="add-contato-form">

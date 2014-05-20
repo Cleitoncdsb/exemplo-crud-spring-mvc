@@ -1,3 +1,4 @@
+var linha;
 
 function submeterForm() {
 
@@ -32,9 +33,11 @@ function submeterForm() {
 			$('#mensagens').text("Edição feita com sucesso");
 		    $('#mensagens').fadeOut(4000);
 
-		    dt.fnUpdate("MASSA" , 0, 3);
-		    
-			console.log("SUCESSO ao editar contato");
+		    dt.fnUpdate(data.nome + " " + data.sobreNome, linha, 0);
+		    dt.fnUpdate(data.endereco, linha, 1);
+		    dt.fnUpdate(data.cidade, linha, 2);
+		    dt.fnUpdate(data.fone, linha, 3);
+		    console.log("SUCESSO ao editar contato");
 			
 		});
 		
@@ -63,7 +66,7 @@ function submeterForm() {
 			console.log("SUCESSO ao adicionar contato");
 			dt.fnAddData({"nome":data.nome + " "+data.sobreNome, 
 				"endereco":data.endereco, "cidade":data.cidade,"fone":data.fone,
-				"editar":"<button id=\"btnEditar\" class=\"btn btn-default btn-lg editarContato\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"povoaForm(\'\/exemplo-jpa-spring-mvc\/contatos\/"+ data.id +"\/\', \'#add-contato-form\');\"> <span class=\"glyphicon glyphicon-edit\"><\/span> <\/button>",
+				"editar":"<button id=\"btnEditar\" class=\"btn btn-default btn-lg editarContato\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"povoaForm(\'\/exemplo-jpa-spring-mvc\/contatos\/"+ data.id +"\/\', \'#add-contato-form\', this);\"> <span class=\"glyphicon glyphicon-edit\"><\/span> <\/button>",
 				"excluir":"<button id=\"btnExcluir\" class=\"btn btn-default btn-lg\" onclick=\"excluir(\'#contatos\',\'\/exemplo-jpa-spring-mvc\/contatos\/"+ data.id +"\/\', this);\"><span class=\"glyphicon glyphicon-trash\"><\/span><\/button>"});
 			
 		});
@@ -102,10 +105,8 @@ function povoaForm(uri, form, row) {
 			populate(form, data);
 			
 			//Adiciona a linha da tabela que está sendo editada, será usada na função submeterForm
-			$('linha').attr('value', row);
+			linha = $(row).parents('tr')[0];
 			
-			console.log("Verificação da linha"+row);
-
 		}
 	});
 
