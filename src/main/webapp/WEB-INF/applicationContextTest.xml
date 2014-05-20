@@ -11,19 +11,18 @@
         http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="???z" />
-	<context:component-scan base-package="???" />
+	<context:component-scan base-package="br.ufc.quixada.npi.service" />
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" primary="true">
-		<property name="driverClassName" value="???" />
-        <property name="url" value="???" />
-        <property name="username" value="???" />
-        <property name="password" value="???" />
+		<property name="driverClassName" value="org.h2.Driver" />
+        <property name="url" value="jdbc:h2:file:h2\db" />
+        <property name="username" value="sa" />
+        <property name="password" value="" />
 	</bean>
 
 	<jdbc:initialize-database data-source="dataSource">
-		<jdbc:script location="???" />
-		<jdbc:script location="???" />
+		<jdbc:script location="classpath:schema.sql" />
+		<jdbc:script location="classpath:test-data.sql" />
 	</jdbc:initialize-database>
 	   
 </beans>

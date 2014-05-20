@@ -71,7 +71,10 @@ function submeterForm() {
 			$('#mensagens').text("Adição feita com sucesso");
 		    $('#mensagens').fadeOut(4000);
 			console.log("SUCESSO ao adicionar contato");
-			dt.fnAddData({"nome":data.nome + " "+data.sobreNome, "endereco":data.endereco, "cidade":data.cidade,"fone":data.fone,"editar":"btn1","excluir":"<button id='btnExcluir' class='btn btn-default btn-lg' onclick='excluir('#contatos','<c:url value='/contatos/${contato.id}' />', this);'><span class='glyphicon glyphicon-trash'></span></button>"});
+			dt.fnAddData({"nome":data.nome + " "+data.sobreNome, 
+				"endereco":data.endereco, "cidade":data.cidade,"fone":data.fone,
+				"editar":"<button id=\"btnEditar\" class=\"btn btn-default btn-lg editarContato\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"povoaForm(\'\/exemplo-jpa-spring-mvc\/contatos\/"+ data.id +"\/\', \'#add-contato-form\');\"> <span class=\"glyphicon glyphicon-edit\"><\/span> <\/button>",
+				"excluir":"<button id=\"btnExcluir\" class=\"btn btn-default btn-lg\" onclick=\"excluir(\'#contatos\',\'\/exemplo-jpa-spring-mvc\/contatos\/"+ data.id +"\/\', this);\"><span class=\"glyphicon glyphicon-trash\"><\/span><\/button>"});
 			
 		});
 		

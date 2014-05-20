@@ -24,15 +24,12 @@
 	<div class="container">
 		<jsp:include page="../fragments/bodyHeader.jsp" />
 
-		<c:url value="/resources/js/npi.js" />
-
 		<br> <br>
 		<h2>Contatos</h2>
 
 	<div id="mensagens" class="alert" hidden="true">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"
 		>&times;</button>
-	  	<strong>Mensagem!</strong>Better check yourself, you're not looking too good.
 	</div>
 
 		<!-- Button trigger modal -->
