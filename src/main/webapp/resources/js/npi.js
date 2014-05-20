@@ -7,8 +7,6 @@ function submeterForm() {
 	
 	var form = $('#add-contato-form');
 	var data = ConvertFormToJSON(form);
-	
-	console.log(ConvertFormToJSON(form));
 
 	//Tabela
 	var dt = $("#contatos").dataTable();
@@ -34,21 +32,13 @@ function submeterForm() {
 			$('#mensagens').text("Edição feita com sucesso");
 		    $('#mensagens').fadeOut(4000);
 
-		    /*
-		    var addData = [];
-		    $.each(data, function(key, value) {
-                addData.push(value);
-			});
+		    dt.fnUpdate("MASSA" , 0, 3);
 		    
-		    dt.fnAddData(addData);
-		    */
-		    
-		      
 			console.log("SUCESSO ao editar contato");
 			
 		});
 		
-		request.fail(function(data) {
+			request.fail(function(data) {
 			console.log("ERRO ao editar contato");
 			
 		});
@@ -96,12 +86,12 @@ function ConvertFormToJSON(form){
 	return json; 
 }
 
-
-function povoaForm(uri, form) {
+//É chamado quando clica no botão de editar contato, ele busca o contato completo e povoa o formulário de edição
+function povoaForm(uri, form, row) {
 	
 	$("#myModalLabel").text("Atualizar contato");
 	$("#btnSubmitForm").text("Atualizar");
-
+	console.log("Verificação da linha" + row.value);
 	$.ajax({
 		type : "GET",
 		dataType : "json",
@@ -110,6 +100,11 @@ function povoaForm(uri, form) {
 
 			console.log(data);
 			populate(form, data);
+			
+			//Adiciona a linha da tabela que está sendo editada, será usada na função submeterForm
+			$('linha').attr('value', row);
+			
+			console.log("Verificação da linha"+row);
 
 		}
 	});
@@ -160,6 +155,7 @@ function excluir(idTable ,uri, row) {
 					  $('#mensagens').text("Remoção Feita com Sucesso");
 				      $('#mensagens').fadeOut(4000);
 					  dt.fnDeleteRow($(row).parents('tr')[0]);
+				
 					}else{
 						$('#mensagens').removeClass('alert-success');
 						$('#mensagens').addClass('alert-danger');
