@@ -43,9 +43,6 @@
 			row="contato" theme="bootstrap2" cssClass="table table-striped"
 			paginate="true" info="false" export="pdf">
 
-			<datatables:column title="Nome" display="pdf">
-				<c:out value="${contato.nome} ${contato.sobreNome}" />
-			</datatables:column>
 			<datatables:column title="Nome Completo" cssStyle="width: 200px;" property="nome">
 				<c:out value="${contato.nome} ${contato.sobreNome}" />
 			</datatables:column>
@@ -82,8 +79,7 @@
 						<h4 class="modal-title" id="myModalLabel">Adicionar contato</h4>
 					</div>
 					
-					<input type="hidden" id="linha">
-					
+										
 					<div class="modal-body">
 
 						<form class="form-horizontal" id="add-contato-form">
