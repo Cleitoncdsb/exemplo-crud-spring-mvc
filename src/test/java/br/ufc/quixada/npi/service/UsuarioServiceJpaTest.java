@@ -5,7 +5,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration(locations = {"classpath:spring/applicationContextTest.xml"})
+@ContextConfiguration(locations = {"classpath:applicationContextTest.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("jpa")
 public class UsuarioServiceJpaTest extends AbstractUsuarioServiceTest {

@@ -37,7 +37,6 @@
 	<tx:annotation-driven transaction-manager="txManager"
 		proxy-target-class="true" />
 
-	<context:component-scan base-package="br.ufc.quixada.npi.repository" />
 	<context:component-scan base-package="br.ufc.quixada.npi.service" />
 
 </beans>
