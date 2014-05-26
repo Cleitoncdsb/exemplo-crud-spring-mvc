@@ -16,7 +16,7 @@ INSERT INTO usuario(
 	
 INSERT INTO usuario(
 			id, login, password, habilitado)
-	VALUES (05, 'joana', '258', true);
+	VALUES (05, 'carla', '258', true);
 	
 INSERT INTO contato(
 			id, nome, sobrenome, fone, cidade, endereco, email)
