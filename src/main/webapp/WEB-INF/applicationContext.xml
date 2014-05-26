@@ -38,5 +38,6 @@
 		proxy-target-class="true" />
 
 	<context:component-scan base-package="br.ufc.quixada.npi.service" />
+	<context:component-scan base-package="br.ufc.quixada.npi.repository" />
 
 </beans>
