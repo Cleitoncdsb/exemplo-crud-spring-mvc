@@ -25,7 +25,7 @@ public abstract class AbstractUsuarioServiceTest {
 		usuario2.setLogin("claudio");
 		usuario2.setSenha("123");
 		this.usuarioService.salvar(usuario2);
-		Assert.assertNotSame("Usuario Id deveria ter sido gerado automaticamente", usuario1, usuario2);	;
+		Assert.assertNotSame("Usuario Id deveria ter sido gerado automaticamente", usuario1, usuario2);
 	}
 
 	@Test
