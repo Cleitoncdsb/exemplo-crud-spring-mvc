@@ -19,23 +19,23 @@ INSERT INTO usuario(
 	VALUES (05, 'joana', '258', true);
 	
 INSERT INTO contato(
-			id, nome, sobrenome, fone, cidade, endereço, email)
+			id, nome, sobrenome, fone, cidade, endereco, email)
 	VALUES (01, 'ana', 'maria','98586332', 'quixada', 'rua 1, 100', 'anamaria@gmail.com');
 
 INSERT INTO contato(
-			id, nome, sobrenome, fone, cidade, endereço, email)
+			id, nome, sobrenome, fone, cidade, endereco, email)
 	VALUES (02, 'maria', 'paula', '45872136', 'fortaleza', 'rua margaridas, 57', 'mariapaula@gmail.com');
 
 INSERT INTO contato(
-			id, nome, sobrenome, fone, cidade, endereço, email)
+			id, nome, sobrenome, fone, cidade, endereco, email)
 	VALUES (03, 'marco', 'luis', '45852147', 'quixeramobim', 'rua 503, 25', 'marcoluis@gmail.com');
 
 INSERT INTO contato(
-			id, nome, sobrenome, fone, cidade, endereço, email)
+			id, nome, sobrenome, fone, cidade, endereco, email)
 	VALUES (04, 'joao', 'lucas', '74581236', 'fortaleza', 'rua nova, 741', 'joaolucas@gmail.com');
 
 INSERT INTO contato(
-			id, nome, sobrenome, fone, cidade, endereço, email)
+			id, nome, sobrenome, fone, cidade, endereco, email)
 	VALUES (05, 'maria', 'luisa', '98586332', 'quixada', 'rua 15 de outubro, s/n', 'anamaria@gmail.com');
 	
 INSERT INTO papel(
@@ -53,5 +53,7 @@ INSERT INTO papel_usuario(
 INSERT INTO papel_usuario(
 			usuario_id, papel_id)
 	VALUES (01, '02');
+
+	
 
 	
