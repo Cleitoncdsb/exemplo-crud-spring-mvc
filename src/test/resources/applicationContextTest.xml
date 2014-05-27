@@ -23,7 +23,7 @@
 	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<!-- Specify the name of the EntityManagerFactory configuration. -->
 		<property name="persistenceUnitName" value="dev" />
-		<property name="dataSource" ref="contatos"/>
+		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">

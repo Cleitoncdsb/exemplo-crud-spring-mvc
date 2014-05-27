@@ -9,10 +9,10 @@
 	<properties>
 		<!-- Bootbox -->
 		<bootbox.version>4.2.0</bootbox.version>
-		
+
 		<!-- Jackson JSON Mapper -->
 		<jackson.version>2.3.0</jackson.version>
-	
+
 		<!-- Generic properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -47,33 +47,36 @@
 
 		<!-- JSP API -->
 		<jsp.version>2.1</jsp.version>
+
+		<!-- H2 Database -->
+		<h2.version>1.4.178</h2.version>
 		
 	</properties>
 
 	<dependencies>
-	
+
 		<!-- JSP API -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-		    <version>${jsp.version}</version>
+			<version>${jsp.version}</version>
 			<scope>provided</scope>
-        </dependency>		
+		</dependency>
 
 		<!-- Jackson JSON Mapper -->
-	
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
- 
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-		
+
 
 		<!-- Java EE / Java SE dependencies -->
 		<dependency>
@@ -152,24 +155,24 @@
 		</dependency>
 
 		<!-- Spring Security -->
- 		<dependency>
- 			<groupId>org.springframework.security</groupId>
- 			<artifactId>spring-security-core</artifactId>
- 			<version>${spring.security.version}</version>
- 		</dependency>
-  
- 		<dependency>
- 			<groupId>org.springframework.security</groupId>
- 			<artifactId>spring-security-web</artifactId>
- 			<version>${spring.security.version}</version>
- 		</dependency>
-  
- 		<dependency>
- 			<groupId>org.springframework.security</groupId>
- 			<artifactId>spring-security-config</artifactId>
- 			<version>${spring.security.version}</version>
- 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
 
 		<!-- Webjars (static dependencies distributed as JAR files) -->
 		<dependency>
@@ -211,13 +214,20 @@
 			<artifactId>datatables</artifactId>
 			<version>${datatables.version}</version>
 		</dependency>
-	
+
 		<!-- Bootbox -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootbox</artifactId>
 			<version>${bootbox.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>
