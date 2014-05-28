@@ -1,7 +1,13 @@
-DROP TABLE contato IF EXISTS;
-DROP TABLE papel EXISTS;
-DROP TABLE papel_usuario IF EXISTS;
-DROP TABLE usuario IF EXISTS;
+-- Table: usuario
+
+CREATE TABLE usuario
+(
+  id serial NOT NULL,
+  habilitado boolean NOT NULL,
+  login character varying(255) NOT NULL,
+  password character varying(255) NOT NULL,
+  CONSTRAINT usuario_pkey PRIMARY KEY (id)
+);
 
 -- Table: contato
 
@@ -40,14 +46,6 @@ CREATE TABLE papel_usuario
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
--- Table: usuario
 
-CREATE TABLE usuario
-(
-  id serial NOT NULL,
-  habilitado boolean NOT NULL,
-  login character varying(255) NOT NULL,
-  password character varying(255) NOT NULL,
-  CONSTRAINT usuario_pkey PRIMARY KEY (id),
-  CONSTRAINT uk_c32w9mwjyd60de9csqo2e5a6w UNIQUE (id, login)
-);
+
+

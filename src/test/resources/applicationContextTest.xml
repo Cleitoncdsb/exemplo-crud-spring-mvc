@@ -13,30 +13,33 @@
 	<context:annotation-config />
 	<context:component-scan base-package="br.ufc.quixada.npi.service" />
 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" primary="true">
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		primary="true">
 		<property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:file:h2\db" />
-        <property name="username" value="sa" />
-        <property name="password" value="" />
+		<property name="url"
+			value="jdbc:h2:mem:npi; MODE=PostgreSQL; DB_CLOSE_DELAY=-1" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
 	</bean>
 
-	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:db/h2database/initDB.sql" />
+		<jdbc:script location="classpath:db/h2h2database/populateDB.sql" />
+	</jdbc:initialize-database>
+
+	<bean id="emf"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<!-- Specify the name of the EntityManagerFactory configuration. -->
 		<property name="persistenceUnitName" value="dev" />
-		<property name="dataSource" ref="dataSource"/>
+		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
-	
-	
-	<jdbc:initialize-database data-source="dataSource">
-		<jdbc:script location="classpath:db/h2database/initDB.sql" />
-		<jdbc:script location="classpath:db/h2database/populateDB.sql" />
-	</jdbc:initialize-database>
-	
+
 	<context:component-scan base-package="br.ufc.quixada.npi.service" />
 	<context:component-scan base-package="br.ufc.quixada.npi.repository" />
-	
+
 </beans>
